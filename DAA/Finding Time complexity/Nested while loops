@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    int n, c = 0;
+    scanf("%d", &n);
+
+    int i = n / 2;
+    c++;
+
+    while (1) {
+        c++;
+
+        if (i >= n)
+            break;
+
+        int j = 1;
+
+        while (1) {
+            c++;
+
+            if (j >= n)
+                break;
+
+            int k = 1;
+
+            while (1) {
+                c++;
+
+                if (k >= n)
+                    break;
+
+                c++;
+                k = k * 2;
+            }
+
+            j = j * 2;
+        }
+
+        i++;
+    }
+
+    printf("%d", c);
+
+    return 0;
+}
