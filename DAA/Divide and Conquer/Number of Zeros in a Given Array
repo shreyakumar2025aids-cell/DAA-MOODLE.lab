@@ -1,0 +1,40 @@
+#include <stdio.h>
+int firstZero(int arr[], int low, int high)
+{
+    if (low > high)
+        return -1;
+
+    int mid = low + (high - low) / 2;
+
+    if (arr[mid] == 0)
+    {
+        if (mid == 0 || arr[mid - 1] == 1)
+            return mid;
+
+        return firstZero(arr, low, mid - 1);
+    }
+    else
+    {
+        return firstZero(arr, mid + 1, high);
+    }
+}
+
+int main()
+{
+    int m;
+    scanf("%d", &m);
+
+    int arr[m];
+
+    for (int i = 0; i < m; i++)
+        scanf("%d", &arr[i]);
+
+    int index = firstZero(arr, 0, m - 1);
+
+    if (index == -1)
+        printf("0");
+    else
+        printf("%d", m - index);
+
+    return 0;
+}
