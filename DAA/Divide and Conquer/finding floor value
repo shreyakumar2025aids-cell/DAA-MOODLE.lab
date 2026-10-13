@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int findFloor(int arr[], int low, int high, int x)
+{
+    if (low > high)
+        return -1;
+
+    if (x >= arr[high])
+        return arr[high];
+
+    if (x < arr[low])
+        return -1;
+
+    int mid = low + (high - low) / 2;
+
+    if (arr[mid] == x)
+        return arr[mid];
+
+    if (arr[mid] > x)
+        return findFloor(arr, low, mid - 1, x);
+
+    int result = findFloor(arr, mid + 1, high, x);
+
+    if (result == -1)
+        return arr[mid];
+
+    return result;
+}
+
+int main()
+{
+    int n, x;
+
+    scanf("%d", &n);
+
+    int arr[n];
+
+    for (int i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    scanf("%d", &x);
+
+    printf("%d", findFloor(arr, 0, n - 1, x));
+
+    return 0;
+}
