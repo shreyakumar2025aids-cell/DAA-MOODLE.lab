@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int findPair(int a[], int left, int right, int x)
+{
+    if (left >= right)
+        return 0;
+
+    int sum = a[left] + a[right];
+
+    if (sum == x)
+    {
+        printf("%d\n", a[left]);
+        printf("%d\n", a[right]);
+        return 1;
+    }
+
+    if (sum < x)
+        return findPair(a, left + 1, right, x);
+    else
+        return findPair(a, left, right - 1, x);
+}
+
+int main()
+{
+    int n, x;
+
+    scanf("%d", &n);
+
+    int a[n];
+
+    for (int i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    scanf("%d", &x);
+
+    if (!findPair(a, 0, n - 1, x))
+        printf("No");
+
+    return 0;
+}
