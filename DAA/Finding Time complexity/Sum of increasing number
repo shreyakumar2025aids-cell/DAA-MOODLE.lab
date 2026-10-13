@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+void function(int n) {
+    int i = 1, s = 1, count = 0;
+
+    count += 2;
+
+    while (s <= n) {
+        count++;
+        i++;
+
+        count++;
+        s += i;
+
+        count++;
+    }
+
+    count++;
+    printf("%d", count);
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    function(n);
+
+    return 0;
+}
